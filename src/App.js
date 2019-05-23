@@ -20,7 +20,7 @@ const initialState = {
   imageURL: "",
   box: {},
   route: "signin",
-  isSignedIn: false,
+  isSignedIn: true,
   users: {
     id: "",
     name: "",
