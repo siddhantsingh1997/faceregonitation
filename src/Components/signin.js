@@ -16,8 +16,21 @@ export default class signin extends React.Component {
     this.setState({ signInPassword: event.target.value });
   };
   onSubmitSignIn = () => {
-   route==="home";
-    this.setState({isSignedin:true});
+     fetch("http://localhost:8080/signin", {
+      method: "post",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+      .then(response => response.json())
+      .then(users => {
+        if (users.id) {
+          this.props.loadUser(users);
+          this.props.onRouteChange("home");
+        }
+      });
   };
   render() {
     const { onRouteChange } = this.props;
