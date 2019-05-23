@@ -26,7 +26,7 @@ export default class signin extends React.Component {
     })
       .then(response => response.json())
       .then(users => {
-        if (users.id) {
+        if (users) {
           this.props.loadUser(users);
           this.props.onRouteChange("home");
         }
